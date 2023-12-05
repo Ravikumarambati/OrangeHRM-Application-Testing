@@ -1,0 +1,96 @@
+package com.OrangeHRMApplicationWebPages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.BaseTest.BaseTest;
+import com.Utility.Log;
+
+public class OrangeHRMLogInPage extends BaseTest {
+
+	
+	//Its an "Object Repository" Class
+	
+		public OrangeHRMLogInPage() //This called an Constructor-when the Java Class name is 
+		                            //similar to Method Name
+		{
+		PageFactory.initElements(driver,this);
+		}
+			
+		//id="logInPanelHeading"
+		//@FindBy is an annotation of POM, used to locate an Element.
+	
+		//1.Identifying the element of the WebPage
+		
+		@FindBy(id="logInPaneIHeading")
+		WebElement logInPanel;
+	
+		//2.Performing an Operation on the Element of the WebPage
+		public void validatingLogInPanelText() //Business Logic
+		{
+		String expected_OrangeHRMApplicationPageText="LOGIN Panel";
+		Log.info("The expected Text of the OrangeHRM Application LogIn Page is:-"+expected_OrangeHRMApplicationPageText);
+	
+		String actual_OrangeHRMApplicationLogInPageText=logInPanel.getText();
+		Log.info("The actual Text of the OrangeHRM Application LogIn Page is:-"+actual_OrangeHRMApplicationLogInPageText);
+	
+		if(actual_OrangeHRMApplicationLogInPageText.equals(expected_OrangeHRMApplicationPageText))
+		{
+		Log.info("OrangeHRM Application LogIn Page Text Validation Successfull-PASS");	
+		}
+		else
+		{	
+		Log.info("OrangeHRM Application LogIn Page Text Validation Unsuccessfull-FAIL");
+		}
+		
+		}
+		
+		public void validatingOrangeHRMApplicationLogInPageLogo()
+		{
+		boolean falg=orangeHRMLogo.isDisplayed();
+		if(falg)
+		{
+		Log.info("OrangeHRM Application LogIn WebPage Contains Logo-PASS");
+		}
+		else
+			
+		{
+		Log.info("OrangeHRM Application LogIn WebPage dosn,t Contain Logo-Fail");
+		}
+		}
+		
+		//id="txtUsername"
+		@FindBy(id="txtUsername")
+		WebElement userName;
+		
+		//<input name="txtPassword" autocomplete="off" type="password">
+		
+		//name="txtPassword"
+		@FindBy(name="txtPassword")
+		WebElement password;
+		
+		//<input type="submit" name="Submit" class="button" id"btnLogin" value="LOGIN">
+		
+		@FindBy(className="button")
+		WebElement logInButton;
+		
+		public void validatinLogInFunctionality(String UserName,String Password)
+		{
+		userName.sendKeys(Password);	
+		logInButton.click();
+		
+		
+		
+		
+		
+		
+	
+			
+		}	
+		}
+		
+
+
+
+

@@ -1,0 +1,208 @@
+package com.OrangeHRMApplication;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LogInTest {
+
+	private static Cell logInTestDataRowOfPasswordCell;
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+
+	WebDriver driver;	
+		
+	String applicationUrlAddress="http://127.0.0.1/orangehrm-4.2.0.1/symfony/web/index.php/auth/login";	
+		
+	//Automating ChromeBrowser
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\DELL\\Desktop\\WebApplicationTesting\\Automation\\BrowserDriverFiles\\chromedriver.exe");
+		
+	driver=new ChromeDriver();	
+	System.out.println("****Sucessfully launched Chrome Browser***");
+	
+	//Navigating to OrangeHrm Application UrlAddress
+	driver.get(applicationUrlAddress);
+	System.out.println("Successfull navigated to OrangeHRM Application");	
+	
+	//Validating OrangeHRM Application LogIn Page
+	//1.Title of the LogIn Page-should be "OrangeHRM"
+	//2.Url Address-should have "orangehrm-4.2.o.1"
+	//3.Expected Text-LOGIN Panel
+	
+	//Identifying the UserName Element on the WebPage
+	//Identifying the Properties of UserName Element-by inspecting
+	//<input name="txtUsername"id="txtUsername"type="text">
+	
+	//id-locator
+	//txtUsername-selector
+	
+	//driver.findElement(By.id("txtUsername")).sendKeys("laddu");
+	
+	//userNameProperty=By.id("txtUsrname"); //it's a Property of an element-UserName
+	
+	FileInputStream orangeHRMApplicationLogITestDataFile=new FileInputStream("./src/com/ExecOperations/DataType.xlsx");
+	
+	XSSFWorkbook workBook=new XSSFWorkbook(orangeHRMApplicationLogITestDataFile);
+	XSSFSheet logInTestDataSheet=workBook.getSheet("LogInTestData");
+	
+	Row LogInTestDataRow=logInTestDataSheet.getRow(1);
+	Cell logInTestDataRowOfUserNameCell=LogInTestDataRow.getCell(0);
+	
+	String userNameTestData=logInTestDataRowOfUserNameCell.getStringCellValue();
+	 
+	//String userNameTestData="srini";
+	By userNameProperty=By.id("txtUsername"); //Identifying the Property of an element
+	
+	//finding an element with the property in the current webpage
+	WebElement userName=driver.findElement(userNameProperty);
+	
+	//Operation should be performed on the element-userName
+	userName.sendKeys(userNameTestData);
+	
+	//Identifying Properties of PasswordElement
+	//<input name="txtPassword" autocomplete="off" type="password">
+	
+	Cell longTestDataRowOfPasswordCell=LogInTestDataRow.getCell(1);
+	String passwordTestData=logInTestDataRowOfPasswordCell.getStringCellValue();
+	
+	String PasswordTestData="Ravi@123R";
+	
+	//Identify the Property ofPassword Element
+	
+	By PasswordProperty=By.name("txtPassword");
+	
+	//Identifying the element password with its property
+	
+	WebElement password=driver.findElement(PasswordProperty);
+	//Performing an Operation on the WebElemnt Password
+	password.sendKeys(PasswordTestData);
+	
+	//<input type="submit" Class="button" value="LOGIN">
+	By logInButtonProperty=By.className("button");
+	WebElement logInButton=driver.findElement(logInButtonProperty);
+	logInButton.click();
+	
+	//Validating OrangeHRM Application
+	String expected_OrangeHRMApplicationHomePageText="Admin";
+	System.out.println("The Expected Text of OrangeHRM Application HomePage is:-"+expected_OrangeHRMApplicationHomePageText);
+	
+	//id="welcome"-Property of WelCome Admin Element
+	By welComeAdminProperty=By.id("welcome");
+	WebElement welComeAdmin=driver.findElement(welComeAdminProperty);
+	
+	String actual_OrangeHRMApplicationHomePageText=welComeAdmin.getText();
+	System.out.println("The actual Text of OrangeHRM Application HomePage is:-"+actual_OrangeHRMApplicationHomePageText);
+	
+	//Validating HomePage
+	if(actual_OrangeHRMApplicationHomePageText.contains(expected_OrangeHRMApplicationHomePageText))
+	{
+	System.out.println("Suceesfully Navigated to OrangeHRM Application HomePage-PASS");
+	
+	
+	//Row logIn TestResultRow=logInTestDataSheet.creatRow(1);
+	//Cell logIn TestResultRowOfCell=logInTestResultRow.createCell(2);
+	//of the same first Row--only creating a New CEll to save the Test Result
+	
+	Cell logInTestResultRowOfCell=LogInTestDataRow.createCell(2);
+	logInTestResultRowOfCell.setCellValue("Sucesfully Navigated to OrangeHRM Application HomePage-PASS");
+	}	
+	else 
+	{
+	
+		System.out.println("Failed to Navigat to OrangeHRM Application HomePage-FAIL");
+		//Row logInTestResultRow=logInTestDataSheet.createRow(1);
+		//Cell logInTestResultRowOfCell=logInTestResultRow.createCell(2);
+		
+		Cell logInTestResultRowOfCell=LogInTestDataRow.createCell(2);
+		logInTestResultRowOfCell.setCellValue("Failed to Navigat to OrangeHRM Application HomePage-FAIL");
+	}
+	FileOutputStream orangeHRMApplicationLogInTestResultFile=new FileOutputStream(".src/com/ExecOperations/DataType.xlsx");
+	workBook.write(orangeHRMApplicationLogInTestResultFile);
+	
+	welComeAdmin.click();
+	
+	//Synchronization
+	//Thread.sleep(5000); //Wait time of java
+	
+	//<a href="/orangehrm-4.2.0.1/symfony/web/index.php/auth/logout">Logout</a>
+	//<a href="/orangehrm-4.2.0.1/symfony/web/index.php/auth/logout">Logout</a>
+	
+	//By logOutProperty=By.partialLinkText("Log");
+	
+	By logOutProperty=By.linkText("Logout");
+	
+	//Selenium Wait
+	//WebDriverWait-Explicit Wait
+	
+	//WebDriverWait-is a wait of Selenium-its a smart wait
+	//When the element which is under Test-if loaded-Selenium WebDriver will immediately
+	//automated the element of found with the given property and will and
+	//wait for the rest of the Times set to the WebDriverWait
+	
+	//*WebDriverWait should be only be sed whien there is a need for a particular
+	//element to be identified with the property on the WebPage
+	
+	WebDriverWait wait=new WebDriverWait(driver,10);
+	
+	/*
+	 if the Element is still not found for the Variable of the condition set the the WebDriver throws an exception as--
+	
+	Exception in thread"main" org.openqa.selenium.TimeoutException:
+	Expected condition failed:waiting for visibility of element located by By.linkText:
+	Logout(tried for 10 second(s) with 500 milliseconds interval)
+	 
+	 */
+	 
+	WebElement logOut=driver.findElement(logOutProperty); 
+	 
+	 
+	 
+	 
+	 
+	 
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

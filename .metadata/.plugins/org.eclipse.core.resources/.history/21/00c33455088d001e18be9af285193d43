@@ -1,0 +1,67 @@
+package com.ExcelCommonMethods;
+
+import java.io.FileInputStream;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ExcelOperationMethods {
+
+public static String getRowfCellValue(String excelFilePath,String sheetName,int rowIndex,int cellIndex) throws IOException {
+	
+FileInputStream excelFile=new FileInputStream(excelFilePath);	
+XSSFWorkbook workBook=new XSSFWorkbook(excelFile);
+XSSFSheet sheet=workBook.getSheet(sheetName);
+	
+XSSFRow row=sheet.getRow(rowIndex);
+XSSFCell rowOfCell=row.getCell(cellIndex);
+
+String rowOfCellValue=rowOfCell.getStringCellValue();
+return rowOfCellValue;
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

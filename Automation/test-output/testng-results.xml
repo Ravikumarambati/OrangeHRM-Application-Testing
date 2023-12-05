@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="7" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-11-25T16:01:26 IST" name="Default suite" finished-at="2023-11-25T16:01:27 IST" duration-ms="169">
+    <groups>
+    </groups>
+    <test started-at="2023-11-25T16:01:26 IST" name="Default test" finished-at="2023-11-25T16:01:27 IST" duration-ms="169">
+      <class name="com.TestNG.Annotations1">
+        <test-method signature="gmailApplicationLlaunch()[pri:1, instance:com.TestNG.Annotations1@6a370f4]" started-at="2023-11-25T16:01:27 IST" name="gmailApplicationLlaunch" description="Launching Gmail Application" finished-at="2023-11-25T16:01:27 IST" duration-ms="23" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- gmailApplicationLlaunch -->
+        <test-method signature="gmailApplicationLogInTest()[pri:2, instance:com.TestNG.Annotations1@6a370f4]" started-at="2023-11-25T16:01:27 IST" name="gmailApplicationLogInTest" description="Gmail Application LogIn Test" finished-at="2023-11-25T16:01:27 IST" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- gmailApplicationLogInTest -->
+        <test-method signature="gmailApplicationInBoxTest()[pri:3, instance:com.TestNG.Annotations1@6a370f4]" started-at="2023-11-25T16:01:27 IST" name="gmailApplicationInBoxTest" description="Gmail Application InBox Test" finished-at="2023-11-25T16:01:27 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- gmailApplicationInBoxTest -->
+        <test-method signature="gmailApplicationComposeMailTest()[pri:4, instance:com.TestNG.Annotations1@6a370f4]" started-at="2023-11-25T16:01:27 IST" name="gmailApplicationComposeMailTest" description="Gmail Application ComposeMail Test" finished-at="2023-11-25T16:01:27 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- gmailApplicationComposeMailTest -->
+        <test-method signature="GmailApplicationSentMailTest()[pri:6, instance:com.TestNG.Annotations1@6a370f4]" started-at="2023-11-25T16:01:27 IST" name="GmailApplicationSentMailTest" description="Gmail Application SentMail Test" finished-at="2023-11-25T16:01:27 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GmailApplicationSentMailTest -->
+        <test-method signature="GmailApplicationClose()[pri:7, instance:com.TestNG.Annotations1@6a370f4]" started-at="2023-11-25T16:01:27 IST" name="GmailApplicationClose" description="Gmail Application Close" finished-at="2023-11-25T16:01:27 IST" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GmailApplicationClose -->
+      </class> <!-- com.TestNG.Annotations1 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
